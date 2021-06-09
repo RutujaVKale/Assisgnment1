@@ -1,0 +1,41 @@
+/*
+	total number of rows in file => 250
+	total number of columns in file => 4
+	
+	Data to read is stored in sorter.txt file.	
+*/
+
+#include<iostream>
+#include<fstream>
+#include<string>
+using namespace std;
+
+int main(){
+
+	ifstream file;
+	
+	//datasructure to store file contents
+	string data[250][4];
+	
+	file.open("sorter.txt");
+	if(file.fail()){
+		cout<<"File is not open";
+		return 0;
+	}else{
+		cout<<"File is in processing"<<endl<<endl;
+		for(int i=0;i<250;i++){
+			for(int j=0;j<4;j++){
+				getline(file,data[i][j],' ');
+			}
+		}		
+		file.close();		
+	}
+		
+	//printing the data on console
+	cout<<"Contents of file are:"<<endl;
+	for(int i=0;i<250;i++){
+		for(int j=0;j<4;j++){
+			cout<<data[i][j]<<' ';
+		}
+	}
+}
